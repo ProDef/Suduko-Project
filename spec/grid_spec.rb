@@ -17,9 +17,11 @@ describe Grid do
         expect(grid.second_cell).to eq 1
     end
 
-    it 'should return an array containing 9 items' do
-        expect(grid.cells_array.count).to eq 9
-    end
+    # it 'should return an array containing 9 items' do
+    #     expect(grid.cells_array.count).to eq 9
+    # end
+
+    it ""
 
   end
 end
