@@ -1,5 +1,5 @@
 require 'cell'
-
+require 'set'
 
 describe Cell do 
 
@@ -17,18 +17,6 @@ describe Cell do
 		expect(cell.filled?).to be_true
 	end
 
-	it "knows what its neighbours are from its box" do
-		puzzle_string_array = []
-		'015003002000100906270068430490002017501040380003905000900081040860070025037204600'.each_char { |char| puzzle_string_array << char.to_i }
-		puzzle_array = []
-		puzzle_string_array.each_with_index do |value, index|
-			puzzle_array << Cell.new(index,[],value)
-		end 
-		puzzle_array[41].puzzle = puzzle_array
-		cell = puzzle_array[41]
-		expect(cell.neighbours_in_box).to eq [2, 4, 9, 5]
-	end
-
 	it "knows what row it is in" do 
 		cell = Cell.new(67)		
 		expect(cell.row).to eq 7
@@ -44,8 +32,78 @@ describe Cell do
 		expect(cell.box).to eq 4
 	end
 
+	it "knows what its neighbours are in its box" do
+		puzzle_string_array = []
+		'015003002000100906270068430490002017501040380003905000900081040860070025037204600'.each_char { |char| puzzle_string_array << char.to_i }
+		puzzle_array = []
+		puzzle_string_array.each_with_index do |value, index|
+			puzzle_array << Cell.new(index,[],value)
+		end 
+		puzzle_array[41].puzzle = puzzle_array
+		cell = puzzle_array[41]
+		expect(cell.neighbours_in_box).to eq [2, 4, 9, 5].to_set
+	end
 
+	it "knows what its neighbours are in its row" do
+		puzzle_string_array = []
+		'015003002000100906270068430490002017501040380003905000900081040860070025037204600'.each_char { |char| puzzle_string_array << char.to_i }
+		puzzle_array = []
+		puzzle_string_array.each_with_index do |value, index|
+			puzzle_array << Cell.new(index,[],value)
+		end 
+		puzzle_array[41].puzzle = puzzle_array
+		cell = puzzle_array[41]
+		expect(cell.neighbours_in_row).to eq [5, 1, 4, 3, 8].to_set
+	end
 
+	it "knows what its neighbours are in its column" do
+		puzzle_string_array = []
+		'015003002000100906270068430490002017501040380003905000900081040860070025037204600'.each_char { |char| puzzle_string_array << char.to_i }
+		puzzle_array = []
+		puzzle_string_array.each_with_index do |value, index|
+			puzzle_array << Cell.new(index,[],value)
+		end 
+		puzzle_array[41].puzzle = puzzle_array
+		cell = puzzle_array[41]
+		expect(cell.neighbours_in_column).to eq [3, 8, 2, 5, 1, 4].to_set
+	end
+
+	it "knows what its neighbours are" do
+		puzzle_string_array = []
+		'015003002000100906270068430490002017501040380003905000900081040860070025037204600'.each_char { |char| puzzle_string_array << char.to_i }
+		puzzle_array = []
+		puzzle_string_array.each_with_index do |value, index|
+			puzzle_array << Cell.new(index,[],value)
+		end 
+		puzzle_array[41].puzzle = puzzle_array
+		cell = puzzle_array[41]
+		expect(cell.neighbours).to eq [3, 8, 2, 5, 1, 4, 9].to_set
+	end
+
+	it "knows what its candidates are" do
+		puzzle_string_array = []
+		'015003002000100906270068430490002017501040380003905000900081040860070025037204600'.each_char { |char| puzzle_string_array << char.to_i }
+		puzzle_array = []
+		puzzle_string_array.each_with_index do |value, index|
+			puzzle_array << Cell.new(index,[],value)
+		end 
+		puzzle_array[41].puzzle = puzzle_array
+		cell = puzzle_array[41]
+		expect(cell.candidates).to eq [6, 7]
+	end
+
+	it "can be solved" do
+		puzzle_string_array = []
+		'015003002000100906270068430490002017501040380003905000900081040860070025037204600'.each_char { |char| puzzle_string_array << char.to_i }
+		puzzle_array = []
+		puzzle_string_array.each_with_index do |value, index|
+			puzzle_array << Cell.new(index,[],value)
+		end 
+		puzzle_array[72].puzzle = puzzle_array
+		cell = puzzle_array[72]
+		cell.solve
+		expect(cell).to be_solved
+	end
 
 
 end

@@ -8,10 +8,18 @@ class Grid
   end
 
   def solve
+    outstanding_before, looping = SIZE, false
+    while !solved? && !looping
+      try_to_solve # ask each cell to solve itself
+      outstanding         = @cells.count {|c| c.solved? }
+      looping             = outstanding_before == outstanding       
+      outstanding_before  = outstanding     
+    end 
   end
 
   def solved?
     # a grid if solved if all cells are filled out. Use .all? method
+    # @cells.all? { |cell| cell.solved? }
   end
 
   def inspect
@@ -28,15 +36,5 @@ class Grid
   def puzzle_to_array puzzle
     puzzle.scan(/.{1}/).map(&:to_i)
   end
-
-  # def cells_array
-  #   @cells.scan(/.{9}/)
-  # end
-
-
-
-
-
-
 
 end
