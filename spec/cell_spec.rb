@@ -8,7 +8,7 @@ describe Cell do
     let(:grid) { double :grid, cells: puzzle }
 
 	it "tells us if it is empty" do
-		cell = Cell.new(23)
+		cell = Cell.new(12)
 		expect(cell.filled?).to be_false
 	end
 
@@ -17,11 +17,13 @@ describe Cell do
 		expect(cell.filled?).to be_true
 	end
 
-	xit "knows what its neighbours are from its box" do
-		expect(grid.cells[1].box_neighbours).to eq [2, 5, 7]
-	end
+	# it "knows what its neighbours are from its box" do
+	# 	cell = Cell.new(42)
+	# 	cell.assign_puzzle puzzle
+	# 	expect(cell.neighbours_in_box).to eq [2, 4, 9, 5]
+	# end
 
-	it " knows what row it is in" do 
+	it "knows what row it is in" do 
 		cell = Cell.new(67)		
 		expect(cell.row).to eq 8
 	end
@@ -31,23 +33,10 @@ describe Cell do
 		expect(cell.column).to eq 3
 	end
 
-
-
-
-
-
-
-
-	# it "has puzzle index value 12" do
-	# 	cell = Cell.new
-	# 	expect()
-	# end
-
-
-
-
-
-
+	it "knows what box it is in" do
+		cell = Cell.new(39)
+		expect(cell.box).to eq 4
+	end
 
 
 
@@ -55,12 +44,22 @@ describe Cell do
 
 end
 
-# 015003002
-# 000100906
-# 270068430
-# 490002017
-# 501040380
-# 003905000
-# 900081040
-# 860070025
-# 037204600
+# 015 003 002
+# 000 100 906
+# 270 068 430
+
+# 490 002 017
+# 501 040 380
+# 003 905 000
+
+# 900 081 040
+# 860 070 025
+# 037 204 600
+
+
+
+
+
+
+
+
