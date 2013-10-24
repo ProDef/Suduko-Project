@@ -10,7 +10,7 @@ attr_accessor :value, :puzzle
     @column = column_number
     @box = box_number
     @value = value
-    @puzzle_array = puzzle_array
+    @puzzle = puzzle_array
   end
 
   def row_number
