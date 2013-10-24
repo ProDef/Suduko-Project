@@ -3,6 +3,7 @@ require 'set'
 class Cell
   
 attr_accessor :value, :puzzle
+attr_reader :box, :column, :row
 
   def initialize(location,puzzle_array=[],value=0)
     @location = location
@@ -28,21 +29,9 @@ attr_accessor :value, :puzzle
   def filled?
     @value != 0
   end
-  
-  def box
-    @box
-  end
-
-  def column
-    @column
-  end
-
-  def row
-    @row
-  end
 
   def candidates
-    [1, 2, 3, 4, 5, 6, 7, 8, 9] - self.neighbours.to_a 
+    (1..9).to_a - self.neighbours.to_a 
   end
 
   def neighbours

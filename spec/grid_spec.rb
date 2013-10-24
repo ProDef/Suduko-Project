@@ -16,10 +16,6 @@ describe Grid do
     it 'should have an unsolved first cell' do
         expect(grid.first_cell).to eq 0
     end
-    
-    it 'should have a solved second cells with value 1' do
-        expect(grid.second_cell).to eq 1
-    end
 
     it "makes an array of cells from the puzzle string" do
         expect(grid.cells[28].value).to eq 9
@@ -58,6 +54,8 @@ describe Grid do
 
     it "can solve itself from the web" do
         grid = Grid.new web_puzzle
+        puts grid.inspect
+        puts "-----------"
         grid.solve
         expect(grid).to be_solved
         puts grid.inspect
