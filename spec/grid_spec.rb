@@ -1,5 +1,4 @@
 require 'grid'
-require 'cell'
 
 describe Grid do
   context "initialization" do
@@ -55,7 +54,7 @@ describe Grid do
     it "can solve itself from the web" do
         grid = Grid.new web_puzzle
         puts grid.inspect
-        puts "-----------"
+        puts "---------"
         grid.solve
         expect(grid).to be_solved
         puts grid.inspect
