@@ -46,6 +46,9 @@ describe Grid do
     end
 
     it "can solve itself" do
+        grid = Grid.new puzzle
+        puts grid.inspect
+        puts '- - - - -'
         grid.solve
         expect(grid).to be_solved
         puts grid.inspect
@@ -54,7 +57,7 @@ describe Grid do
     it "can solve itself from the web" do
         grid = Grid.new web_puzzle
         puts grid.inspect
-        puts "---------"
+        puts "- - - - -"
         grid.solve
         expect(grid).to be_solved
         puts grid.inspect
