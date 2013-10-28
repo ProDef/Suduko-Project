@@ -5,6 +5,7 @@ describe Grid do
     let(:puzzle) { '015003002000100906270068430490002017501040380003905000900081040860070025037204600' } # it's an easy sudoku puzzle, row by row
     let(:solved_puzzle) { '1151131121111119162711684314911121175111413811139151119111811418617125137214611' } # it's an easy sudoku puzzle, row by row
     let(:web_puzzle) { '102004070000902800009003004000240006000107000400068000200800700007501000080400109' }
+    let(:false_puzzle) { '102004077700902800009003004000240007770107000400068000200770700007501777780400109' }
     let(:grid) { Grid.new(puzzle) }
     let(:cell) { double :cell }
    
@@ -58,6 +59,28 @@ describe Grid do
       grid.solve
       expect(grid).to be_solved
       puts grid.inspect
+    end
+
+    it "can solve itself from the web" do
+        grid = Grid.new web_puzzle
+        puts grid.inspect
+        puts "Solving.........."
+        puts "- - - - -"
+        grid.solve
+        expect(grid).to be_solved
+        puts grid.inspect
+        puts "Solved"
+    end
+
+    it "cannot solve a false Sudoku" do
+        grid = Grid.new false_puzzle
+        puts grid.inspect
+        puts "solving.........."
+        puts "- - - - -"
+        grid.solve
+        expect(grid).to_not be_solved
+        puts grid.inspect
+        puts "Unsolved"
     end
 
     it "can solve the puzzle" do
