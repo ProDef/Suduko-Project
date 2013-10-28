@@ -3,7 +3,7 @@ require 'set'
 class Cell
   
 attr_accessor :value, :puzzle
-attr_reader :box, :column, :row
+attr_reader :box, :column, :row, :location
 
   def initialize(location,puzzle_array=[],value=0)
     @location = location

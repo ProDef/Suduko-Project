@@ -1,5 +1,6 @@
 require 'cell'
 require 'set'
+require 'rspec/expectations'
 
 describe Cell do 
 
@@ -104,26 +105,14 @@ describe Cell do
 		cell.solve
 		expect(cell).to be_solved
 	end
-
-
 end
 
-# 015 003 002
-# 000 100 906
-# 270 068 430
 
-# 490 002 017
-# 501 040 380
-# 003 905 000
-
-# 900 081 040
-# 860 070 025
-# 037 204 600
-
-
-
-
-
-
-
-
+	# before(:each) do
+	# 	puzzle_string_array = []
+	# 	'015003002000100906270068430490002017501040380003905000900081040860070025037204600'.each_char { |char| puzzle_string_array << char.to_i }
+	# 	puzzle_array = []
+	# 	puzzle_string_array.each_with_index do |value, index|
+	# 		puzzle_array << Cell.new(index,[],value)
+	# 	end 
+	# end
